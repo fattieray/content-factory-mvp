@@ -1,16 +1,33 @@
 import os
 import json
+import sys
 from typing import Dict, Any
 from openai import OpenAI
-from ..prompts import ANALYZE_PROMPT, GENERATE_PROMPT
-from ..core.schemas import (
-    StyleFeatures,
-    L1Structure,
-    L2Logic,
-    L3Perspective,
-    L4Expression,
-    L5Material,
-)
+
+# 支持直接运行和模块导入两种模式
+try:
+    from ..prompts import ANALYZE_PROMPT, GENERATE_PROMPT
+    from ..core.schemas import (
+        StyleFeatures,
+        L1Structure,
+        L2Logic,
+        L3Perspective,
+        L4Expression,
+        L5Material,
+    )
+except ImportError:
+    # 添加 backend 到路径
+    backend_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.insert(0, backend_path)
+    from prompts import ANALYZE_PROMPT, GENERATE_PROMPT
+    from core.schemas import (
+        StyleFeatures,
+        L1Structure,
+        L2Logic,
+        L3Perspective,
+        L4Expression,
+        L5Material,
+    )
 
 
 class QwenService:

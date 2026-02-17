@@ -23,28 +23,28 @@ ANALYZE_PROMPT = """你是一位专业的内容分析专家。请分析以下文
 请以 JSON 格式输出分析结果：
 
 ```json
-{
-  "l1_structure": {
+{{
+  "l1_structure": {{
     "pattern": "结构模式名称",
     "description": "结构描述"
-  },
-  "l2_logic": {
+  }},
+  "l2_logic": {{
     "method": "逻辑方法",
     "description": "逻辑描述"
-  },
-  "l3_perspective": {
+  }},
+  "l3_perspective": {{
     "angle": "视角名称",
     "description": "视角描述"
-  },
-  "l4_expression": {
+  }},
+  "l4_expression": {{
     "style": "表达风格",
     "description": "表达描述"
-  },
-  "l5_material": {
+  }},
+  "l5_material": {{
     "types": ["素材类型 1", "素材类型 2"],
     "description": "素材描述"
-  }
-}
+  }}
+}}
 ```
 
 **待分析文章**：
