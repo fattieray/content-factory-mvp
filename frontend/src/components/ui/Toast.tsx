@@ -11,10 +11,9 @@ export function Toast({ message, type = 'info', onClose }: ToastProps) {
     info: 'bg-gray-800 text-white',
   };
 
-  React.useEffect(() => {
-    const timer = setTimeout(onClose, 3000);
-    return () => clearTimeout(timer);
-  }, [onClose]);
+  setTimeout(() => {
+    onClose();
+  }, 3000);
 
   return (
     <div className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg ${typeClasses[type]}`}>

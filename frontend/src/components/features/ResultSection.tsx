@@ -15,7 +15,7 @@ interface Version {
 }
 
 export function ResultSection() {
-  const { generations, currentGeneration } = useAppStore();
+  const { generations } = useAppStore();
   const { copy, copied } = useCopyToClipboard();
   const [selectedVersion, setSelectedVersion] = React.useState<number>(0);
   const [toast, setToast] = React.useState<{ message: string; type: 'success' | 'error' } | null>(

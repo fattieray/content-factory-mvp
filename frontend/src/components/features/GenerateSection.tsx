@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppStore } from '@/stores/appStore';
-import { generateContent, generateMultiVersions } from '@/services/api';
+import { generateMultiVersions } from '@/services/api';
 import { Button } from '@/components/ui/Button';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { Toast } from '@/components/ui/Toast';

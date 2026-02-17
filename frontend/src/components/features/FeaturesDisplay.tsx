@@ -1,6 +1,4 @@
-import React from 'react';
 import { useAppStore } from '@/stores/appStore';
-import type { StyleFeatures } from '@/types';
 
 interface FeatureItemProps {
   title: string;

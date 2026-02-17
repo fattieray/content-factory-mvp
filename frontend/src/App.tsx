@@ -1,4 +1,3 @@
-import React from 'react';
 import { FeedSection } from '@/components/features/FeedSection';
 import { GenerateSection } from '@/components/features/GenerateSection';
 import { FeaturesDisplay } from '@/components/features/FeaturesDisplay';
