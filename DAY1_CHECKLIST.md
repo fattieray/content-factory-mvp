@@ -8,23 +8,23 @@
 
 ## 📋 今日任务
 
-### 1. 申请 Claude API Key (预计 10 分钟)
+### 1. 申请通义千问 API Key (预计 10 分钟)
 
 **步骤**：
-1. 访问 https://console.anthropic.com
-2. 注册/登录账号
-3. 进入 API Keys 页面
+1. 访问 https://dashscope.console.aliyun.com/
+2. 登录/注册阿里云账号
+3. 进入「API-KEY 管理」页面
 4. 创建新的 API Key
 5. 复制 Key 到 `backend/.env` 文件
 
 **验证**：
 ```bash
 curl --request POST \
-  --url https://api.anthropic.com/v1/messages \
-  --header 'x-api-key: sk-ant-api03-xxxxxxxxxxxxx' \
+  --url https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions \
+  --header 'Authorization: Bearer sk-xxxxxxxxxxxxx' \
   --header 'Content-Type: application/json' \
   --data '{
-    "model": "claude-3-5-sonnet-20241022",
+    "model": "qwen-plus",
     "max_tokens": 100,
     "messages": [{"role": "user", "content": "Hello"}]
   }'
@@ -91,7 +91,8 @@ vercel link --project content-factory-mvp
 
 **配置环境变量**：
 在 Vercel Dashboard 中添加：
-- `CLAUDE_API_KEY` - 你的 Claude API Key
+- `QWEN_API_KEY` - 你的通义千问 API Key
+- `QWEN_BASE_URL` - https://dashscope.aliyuncs.com/compatible-mode/v1
 - `SUPABASE_URL` - (可选)
 - `SUPABASE_KEY` - (可选)
 
@@ -141,11 +142,12 @@ nvm use 20
 python3 --version  # 应该 >= 3.11
 ```
 
-### 3. Claude API 调用失败
+### 3. 通义千问 API 调用失败
 **检查**:
 - API Key 是否正确
-- 是否有可用额度
+- 是否有可用额度（新用户有免费额度）
 - 网络连接是否正常
+- 模型名称是否正确（qwen-plus）
 
 ---
 
@@ -153,7 +155,7 @@ python3 --version  # 应该 >= 3.11
 
 | 时间 | 任务 | 状态 | 备注 |
 |------|------|------|------|
-|      | Claude API 申请 | ⏳ | |
+|      | 通义千问 API 申请 | ⏳ | |
 |      | 前端依赖安装 | ⏳ | |
 |      | 后端依赖安装 | ⏳ | |
 |      | Vercel CLI 安装 | ⏳ | |
