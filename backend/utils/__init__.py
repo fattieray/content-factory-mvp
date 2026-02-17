@@ -1,3 +1,3 @@
-from .ai_service import ClaudeService
+from .ai_service import QwenService
 
-__all__ = ["ClaudeService"]
+__all__ = ["QwenService"]

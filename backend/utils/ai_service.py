@@ -1,7 +1,7 @@
 import os
 import json
 from typing import Dict, Any
-import anthropic
+from openai import OpenAI
 from ..prompts import ANALYZE_PROMPT, GENERATE_PROMPT
 from ..core.schemas import (
     StyleFeatures,
@@ -13,27 +13,37 @@ from ..core.schemas import (
 )
 
 
-class ClaudeService:
-    """Claude AI 服务"""
+class QwenService:
+    """通义千问 Qwen3.5 AI 服务"""
 
     def __init__(self):
-        api_key = os.getenv("CLAUDE_API_KEY")
+        # Qwen API 配置
+        api_key = os.getenv("QWEN_API_KEY")
+        base_url = os.getenv(
+            "QWEN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        )
+
         if not api_key:
-            raise ValueError("CLAUDE_API_KEY 未配置")
-        self.client = anthropic.Anthropic(api_key=api_key)
+            raise ValueError("QWEN_API_KEY 未配置")
+
+        # 使用 OpenAI 兼容接口
+        self.client = OpenAI(api_key=api_key, base_url=base_url)
 
     async def analyze_article(self, content: str) -> StyleFeatures:
         """分析文章特征"""
         prompt = ANALYZE_PROMPT.format(content=content)
 
-        response = self.client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=2000,
+        response = self.client.chat.completions.create(
+            model="qwen-plus",  # 或 qwen-turbo / qwen-max
             messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=2000,
         )
 
         # 提取 JSON 内容
-        content_text = response.content[0].text
+        content_text = response.choices[0].message.content
+
+        # 尝试提取 JSON
         json_start = content_text.find("{")
         json_end = content_text.rfind("}") + 1
 
@@ -76,10 +86,11 @@ class ClaudeService:
             word_count=word_count,
         )
 
-        response = self.client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=4000,
+        response = self.client.chat.completions.create(
+            model="qwen-plus",
             messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=4000,
         )
 
-        return response.content[0].text
+        return response.choices[0].message.content

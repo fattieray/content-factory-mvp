@@ -1,6 +1,6 @@
 from typing import Any
 from ..core.schemas import ApiResponse, AnalyzeRequest, StyleFeatures
-from ..utils.ai_service import ClaudeService
+from ..utils.ai_service import QwenService
 import uuid
 from datetime import datetime
 
@@ -13,7 +13,7 @@ async def analyze_handler(request: AnalyzeRequest) -> ApiResponse:
     """分析文章特征"""
     try:
         # 初始化 AI 服务
-        ai_service = ClaudeService()
+        ai_service = QwenService()
 
         # 分析文章
         features = await ai_service.analyze_article(request.content)

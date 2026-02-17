@@ -1,6 +1,6 @@
 from typing import Any
 from ..core.schemas import ApiResponse, GenerationRequest
-from ..utils.ai_service import ClaudeService
+from ..utils.ai_service import QwenService
 from .analyze import samples_db
 import uuid
 from datetime import datetime
@@ -22,7 +22,7 @@ async def generate_handler(request: GenerationRequest) -> ApiResponse:
             )
 
         # 初始化 AI 服务
-        ai_service = ClaudeService()
+        ai_service = QwenService()
 
         # 从样本中提取特征
         features_data = sample.get("features", {})

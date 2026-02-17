@@ -47,9 +47,10 @@ vercel dev
 
 需要配置以下环境变量：
 
-- `CLAUDE_API_KEY` - Claude API 密钥
-- `SUPABASE_URL` - Supabase 项目 URL
-- `SUPABASE_KEY` - Supabase API 密钥
+- `QWEN_API_KEY` - 通义千问 API 密钥（获取：https://dashscope.console.aliyun.com/）
+- `QWEN_BASE_URL` - Qwen API 基础 URL（默认：https://dashscope.aliyuncs.com/compatible-mode/v1）
+- `SUPABASE_URL` - Supabase 项目 URL（可选）
+- `SUPABASE_KEY` - Supabase API 密钥（可选）
 
 ## 技术栈
 
@@ -64,7 +65,7 @@ vercel dev
 - Vercel Serverless
 
 **AI**
-- Claude API (Claude 3.5 Sonnet)
+- 通义千问 API (Qwen3.5 / qwen-plus)
 
 **数据库**
 - Supabase (PostgreSQL)
