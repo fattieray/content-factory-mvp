@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "functions": {
     "api/*.py": {
       "runtime": "@vercel/python@4.1.0",
@@ -7,8 +8,13 @@
     }
   },
   "env": {
-    "CLAUDE_API_KEY": "@claude-api-key",
-    "SUPABASE_URL": "@supabase-url",
-    "SUPABASE_KEY": "@supabase-key"
-  }
+    "QWEN_API_KEY": "@qwen-api-key",
+    "QWEN_BASE_URL": "@qwen-base-url"
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    }
+  ]
 }

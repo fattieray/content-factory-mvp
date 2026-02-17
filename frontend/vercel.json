@@ -7,11 +7,11 @@
     }
   },
   "env": {
-    "CLAUDE_API_KEY": "@claude-api-key",
-    "SUPABASE_URL": "@supabase-url",
-    "SUPABASE_KEY": "@supabase-key"
+    "QWEN_API_KEY": "@qwen-api-key",
+    "QWEN_BASE_URL": "@qwen-base-url"
   },
   "outputDirectory": "dist",
   "buildCommand": "npm run build",
-  "framework": "vite"
+  "framework": "vite",
+  "installCommand": "npm install"
 }
