@@ -1,0 +1,6 @@
+fastapi==0.109.0
+pydantic==2.5.3
+anthropic==0.8.1
+supabase==2.3.4
+python-dotenv==1.0.0
+vercel==0.1.0

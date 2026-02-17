@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/*.py": {
+      "runtime": "@vercel/python@4.1.0",
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "CLAUDE_API_KEY": "@claude-api-key",
+    "SUPABASE_URL": "@supabase-url",
+    "SUPABASE_KEY": "@supabase-key"
+  }
+}
