@@ -1,15 +1,11 @@
 {
   "version": 2,
   "functions": {
-    "api/*.py": {
+    "api/index.py": {
       "runtime": "@vercel/python@4.1.0",
       "memory": 1024,
       "maxDuration": 60
     }
-  },
-  "env": {
-    "QWEN_API_KEY": "@qwen-api-key",
-    "QWEN_BASE_URL": "@qwen-base-url"
   },
   "routes": [
     {
